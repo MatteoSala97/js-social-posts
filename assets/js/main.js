@@ -59,19 +59,66 @@ const posts = [
 
 function printArray(array){
 
-    const divHtml = document.getElementById("ciao")
+    const container = document.getElementById("container")
 
-    array.forEach((object, index)=>{
-        const pHtml = `<p>
-        ${object.author.name}
-        </p>`
+    array.forEach((post)=>{
+        const postElement = document.createElement("div")
+        postElement.classList.add("post")
 
+        const profileImgSrc = post.author.image ? post.author.image : "https: placehold.it/60x60"
 
+        const initials = post.author.name.split( " " ).map(word => word[0]).join("")
 
+        const profilePic = post.author.image ? `
+        <img class="profile-pic" src="${profileImgSrc}" 
+        alt="${post.author.name}">
+        ` : `
+        <div class="profile-pic-default">
+        <span>${initials}</span>
+        </div>`
 
+        const date = new Date(post.created)
+        const formattedDate = date.toLocaleDateString("it-IT")
 
+        const postHtml = `
+        <div class="post__header">
+            <div class="post-meta">                    
+                <div class="post-meta__icon">
+                    ${profilePic}
+                </div>
+                <div class="post-meta__data">
+                    <div class="post-meta__author">${post.author.name}</div>
+                    <div class="post-meta__time">${formattedDate}</div>
+                </div>                    
+            </div>
+        </div>
+        <div class="post__text">${post.content}</div>
+        ${post.media ? `<div class="post__image"><img src="${post.media}" alt=""></div>` : ''}
+        <div class="post__footer">
+            <div class="likes js-likes">
+                <div class="likes__cta">
+                    <a class="like-button js-like-button"  data-postid="${post.id}">
+                        <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                        <span class="like-button__label">Mi Piace</span>
+                    </a>
+                </div>
+                <div class="likes__counter">
+                    Piace a <b id="like-counter-${post.id}" class="js-likes-counter">${post.likes}</b> persone
+                </div>
+            </div> 
+        </div>            
+    `
+        
 
-        divHtml.innerHTML += pHtml
+        postElement.innerHTML = postHtml
+        container.appendChild(postElement)
     })
 }
+
 printArray(posts)
+
+
+document.addEventListener("click", function (event){
+})
+
+

@@ -54,4 +54,24 @@ const posts = [
         "likes": 95,
         "created": "2021-03-05"
     }
-];
+]
+
+
+function printArray(array){
+
+    const divHtml = document.getElementById("ciao")
+
+    array.forEach((object, index)=>{
+        const pHtml = `<p>
+        ${object.author.name}
+        </p>`
+
+
+
+
+
+
+        divHtml.innerHTML += pHtml
+    })
+}
+printArray(posts)

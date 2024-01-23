@@ -115,10 +115,35 @@ function printArray(array){
     })
 }
 
+
 printArray(posts)
 
 
-document.addEventListener("click", function (event){
-})
 
+// const likedClass = 'like-button--liked'
 
+// document.addEventListener("click", function (event) {
+//     const target = event.target
+
+//     if (target.classList.contains('js-like-button')) {
+//         event.preventDefault()
+
+//         const postId = target.getAttribute('data-postid')
+//         const post = posts.find(post => post.id.toString() === postId)
+
+//         if (post) {
+//             const isLiked = target.classList.contains(likedClass)
+
+//             if (isLiked) {
+//                 post.likes = post.likes - 1
+//             } else {
+//                 post.likes = post.likes + 1
+//             }
+
+//             const likeCounter = document.getElementById(`like-counter-${postId}`)
+//             likeCounter.textContent = post.likes
+
+//             target.classList.toggle(likedClass)
+//         }
+//     }
+// })

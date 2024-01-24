@@ -147,3 +147,25 @@ printArray(posts)
 //         }
 //     }
 // })
+
+
+/* correzione fatta in classe
+
+likeButtons.forEach((element, index)=>{
+    element.addEventListener("click", function(e){
+        e.preventDefault()
+        element.classList.toggle("like-button--liked")
+
+        if (element.classList.contains("like-button--liked")){
+            posts[index].likes++
+
+            counterButtons[index].innerHTML = posts[index].likes
+            console.log(posts[index])
+        } else {
+            posts[index].likes--
+            counterButtons[index].innerHTML = posts[index],likes
+        }
+    })
+})
+
+*/
